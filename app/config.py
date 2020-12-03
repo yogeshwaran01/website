@@ -1,7 +1,7 @@
 import os
 
 class Configaration:
-    SECRET_KEY = "mywebsiteuseflaskapp"
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     FLASK_ADMIN_SWATCH = "cerulean"
