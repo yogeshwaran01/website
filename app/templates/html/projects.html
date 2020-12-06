@@ -14,30 +14,12 @@
     </div>
   </header>
 <ul class="list-inline text-center">
-    <li class="list-inline-item">
-        <div class="github-card" data-github="yogeshwaran01/instagramy" data-width="400" data-height="178" data-theme="default"></div>
-    </li>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-    <li class="list-inline-item">
-        <div class="github-card" data-github="yogeshwaran01/maskurl" data-width="400" data-height="178" data-theme="default"></div>
-    </li>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-    <li class="list-inline-item">
-        <div class="github-card" data-github="yogeshwaran01/web-series-quotes" data-width="400" data-height="178" data-theme="default"></div>
-    </li>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-    <li class="list-inline-item">
-        <div class="github-card" data-github="yogeshwaran01/elements-table-api" data-width="400" data-height="178" data-theme="default"></div>
-    </li>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-    <li class="list-inline-item">
-        <div class="github-card" data-github="yogeshwaran01/Python-Scripts" data-width="400" data-height="178" data-theme="default"></div>
-    </li>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-    <li class="list-inline-item">
-        <div class="github-card" data-github="yogeshwaran01/website" data-width="400" data-height="178" data-theme="default"></div>
-    </li>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+  {% for repo in repos  %}
+  <li class="list-inline-item">
+    <div class="github-card" data-github="{{ repo }}" data-width="400" data-height="178" data-theme="default"></div>
+  </li>
+  <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script> 
+  {% endfor %}
 </ul>
 
 {% endblock content %}

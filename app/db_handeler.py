@@ -2,6 +2,7 @@ import markdown
 
 from .models import db, Posts, Contact
 
+
 class DB_Handler:
     class TablePost:
         @staticmethod
@@ -29,6 +30,10 @@ class DB_Handler:
                 "timestamp": post.timestamp,
                 "id": post.id,
             }
+
+        @staticmethod
+        def all_title():
+            return [i["title"] for i in DB_Handler.TablePost.all_query()]
 
         @staticmethod
         def PostData(title, body):

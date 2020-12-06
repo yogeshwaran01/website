@@ -1,9 +1,11 @@
 import os
 
-from app import app, database as db, admin
+from app import app, database as db, admin, auth
+from helper.github_repos import github_repo
+from helper.admin_auth import Authenticate
 from .db_handeler import DB_Handler
 from .models import Posts, Contact
-from .admin_auth import Authenticate, auth
+
 
 from flask import (
     jsonify,
@@ -75,6 +77,7 @@ def cv():
 def index():
     return render_template("html/index.html")
 
+
 @app.route("/posts")
 def posts():
     return render_template("html/posts.html", posts=DB_Handler.TablePost.all_query())
@@ -96,6 +99,7 @@ def contact():
         return render_template("html/contact.html", message=a["message"])
     return render_template("html/contact.html")
 
-@app.route('/projects')
+
+@app.route("/projects")
 def projects():
-    return render_template('html/projects.html')
+    return render_template("html/projects.html", repos=github_repo())
