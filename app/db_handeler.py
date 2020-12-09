@@ -1,12 +1,16 @@
 import markdown
 
-from .models import db, Posts, Contact
+from .models import db, Posts, Contact, Portfolio
 
 
 class DB_Handler:
+    """
+    Class for direct interaction with database
+    """
+
     class TablePost:
         @staticmethod
-        def all_query():
+        def all_query() -> list:
             data = []
             posts = Posts.query.all()
             for post in posts:
@@ -20,7 +24,7 @@ class DB_Handler:
             return data
 
         @staticmethod
-        def query_by_id(_id):
+        def query_by_id(_id) -> dict:
             post = Posts.query.filter_by(id=_id).first()
             if post is None:
                 return {"status": 404, "message": "No id Available"}
@@ -32,11 +36,11 @@ class DB_Handler:
             }
 
         @staticmethod
-        def all_title():
+        def all_title() -> list:
             return [i["title"] for i in DB_Handler.TablePost.all_query()]
 
         @staticmethod
-        def PostData(title, body):
+        def PostData(title, body) -> dict:
             post = Posts(title=title, body=body)
             db.session.add(post)
             db.session.commit()
@@ -44,7 +48,7 @@ class DB_Handler:
 
     class TableContact:
         @staticmethod
-        def all_query():
+        def all_query() -> list:
             data = []
             cons = Contact.query.all()
             for con in cons:
@@ -53,8 +57,14 @@ class DB_Handler:
             return data
 
         @staticmethod
-        def PostData(name, email, message):
+        def PostData(name, email, message) -> dict:
             con = Contact(name=name, email=email, message=message)
             db.session.add(con)
             db.session.commit()
             return {"status": 200, "message": "Message sended sucessfully"}
+
+    class TablePortfolio:
+        @staticmethod
+        def text() -> str:
+
+            return markdown.markdown(Portfolio.query.all()[0].text)

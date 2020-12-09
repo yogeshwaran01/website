@@ -4,7 +4,7 @@ from app import app, database as db, admin, auth
 from helper.github_repos import github_repo
 from helper.admin_auth import Authenticate
 from .db_handeler import DB_Handler
-from .models import Posts, Contact
+from .models import Posts, Contact, Portfolio
 
 
 from flask import (
@@ -57,6 +57,7 @@ def post_api():
 
 admin.add_view(Authenticate(Posts, db.session))
 admin.add_view(Authenticate(Contact, db.session))
+admin.add_view(Authenticate(Portfolio, db.session))
 
 
 @auth.required
@@ -75,7 +76,8 @@ def cv():
 
 @app.route("/")
 def index():
-    return render_template("html/index.html")
+    data = DB_Handler.TablePortfolio.text()
+    return render_template("html/index.html", text=data)
 
 
 @app.route("/posts")
