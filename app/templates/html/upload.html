@@ -1,0 +1,24 @@
+{% extends 'html/base.html' %} {% block content %}
+<header class="masthead" style="background-color: black;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <div class="post-heading">
+                    <h1 style="color: yellowgreen;">Upload new File</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto">
+            <form method=post enctype=multipart/form-data>
+                <input type=file name=file>
+                <input type=submit value=Upload>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

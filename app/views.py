@@ -3,10 +3,13 @@ import os
 from app import app, database as db, admin, auth
 from helper.github_repos import github_repo
 from helper.admin_auth import Authenticate
+from helper.is_allowed import is_allowed_file
 from .db_handeler import DB_Handler
 from .models import Posts, Contact, Portfolio
+from .config import Configaration
 
 
+from werkzeug.utils import secure_filename
 from flask import (
     jsonify,
     request,
@@ -15,6 +18,7 @@ from flask import (
     url_for,
     render_template,
     send_from_directory,
+    flash,
 )
 
 # favicon
@@ -105,3 +109,27 @@ def contact():
 @app.route("/projects")
 def projects():
     return render_template("html/projects.html", repos=github_repo())
+
+# Upload files
+
+
+@app.route("/view")
+def view_image():
+    return render_template("html/view.html", images=os.listdir("app/static/uploads"))
+
+
+@app.route("/upload", methods=["GET", "POST"])
+def upload_file():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and is_allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(Configaration.UPLOAD_FOLDER, filename))
+            return redirect("/view")
+    return render_template('html/upload.html')

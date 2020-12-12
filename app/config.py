@@ -10,3 +10,5 @@ class Configaration:
     BASIC_AUTH_PASSWORD = os.environ.get('ADMIN_PASS')
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
+    UPLOAD_FOLDER = 'app/static/uploads'
+    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'py', 'js'}
