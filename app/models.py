@@ -1,10 +1,10 @@
-from app import database as db
-
 from datetime import datetime
 
+from app import database as db
 
-class Posts(db.Model):
-    """" Database Table for Blog post """
+
+class Posts(db.Model):  # type: ignore
+    """ Database Table for Blog post """
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150))
@@ -15,8 +15,8 @@ class Posts(db.Model):
         return f"{self.title} -> {self.timestamp}"
 
 
-class Contact(db.Model):
-    """" Database Table for Contact details """
+class Contact(db.Model):  # type: ignore
+    """ Database Table for Contact details """
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
@@ -27,8 +27,8 @@ class Contact(db.Model):
         return f"{self.name} -> {self.email}"
 
 
-class Portfolio(db.Model):
-    """" Database Table for portfolio """
+class Portfolio(db.Model):  # type: ignore
+    """ Database Table for portfolio """
 
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text())

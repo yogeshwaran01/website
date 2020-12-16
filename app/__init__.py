@@ -1,15 +1,16 @@
-from flask import Flask, Response, redirect
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_admin import Admin
 from flask_basicauth import BasicAuth
 from flask_simplemde import SimpleMDE
 
-from .config import Configaration
+from .config import Configuration
 
 # init Flask app
 app = Flask(__name__)
-app.config.from_object(Configaration)
+# loads configuration for flask app
+app.config.from_object(Configuration)
 
 # init Database for Flask app
 database = SQLAlchemy(app)
