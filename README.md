@@ -15,6 +15,14 @@ My personal completely dynamic website site about [me](https://yogeshwaran01.her
 ## Tools used
 
 - Python
+  - Markdown Package (Convert markdown to html)
+  - Pytest (Test the app)
+  - black (Code formatter)
+  - flake8 (Code Linter)
 - Flask
-- Html, Css, Javascript
+  - flask_sqlalchemy (Database handeler)
+  - flask-admin (Extention for admin page)
+  - flask_basicauth (Authentication for admin )
+  - flask_simplemde (Markdown editor)
+- Html, Css, Javascript (Bootstarp studio)
 - Postgress
