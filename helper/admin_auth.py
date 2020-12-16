@@ -6,6 +6,10 @@ from app import auth
 
 
 class AuthException(HTTPException):
+    """
+    class raise error when admin authentication is failed
+    """
+
     def __init__(self, message):
         super().__init__(
             message,
@@ -18,6 +22,10 @@ class AuthException(HTTPException):
 
 
 class Authenticate(ModelView):
+    """
+    class override the class Modelview for authentication
+    """
+
     def is_accessible(self):
         if not auth.authenticate():
             raise AuthException("Not authenticated.")

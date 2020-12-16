@@ -1,3 +1,4 @@
+from typing import Any
 import markdown
 
 from .models import db, Posts, Contact, Portfolio
@@ -5,12 +6,17 @@ from .models import db, Posts, Contact, Portfolio
 
 class DB_Handler:
     """
-    Class for direct interaction with database
+    Class that directly interacts with database
     """
 
     class TablePost:
+        """ Class handele the Post table in db """
+
         @staticmethod
         def all_query() -> list:
+            """
+            Method returns lists of all posts from database
+            """
             data = []
             posts = Posts.query.all()
             for post in posts:
@@ -24,7 +30,10 @@ class DB_Handler:
             return data
 
         @staticmethod
-        def query_by_id(_id) -> dict:
+        def query_by_id(_id: int) -> dict:
+            """
+            Method returns post for given id from db
+            """
             post = Posts.query.filter_by(id=_id).first()
             if post is None:
                 return {"status": 404, "message": "No id Available"}
@@ -37,18 +46,29 @@ class DB_Handler:
 
         @staticmethod
         def all_title() -> list:
+            """
+            Method returns all titles of the posts from db
+            """
             return [i["title"] for i in DB_Handler.TablePost.all_query()]
 
         @staticmethod
-        def PostData(title, body) -> dict:
+        def PostData(title: str, body: str) -> dict:
+            """
+            Method add blog posts data to the db
+            """
             post = Posts(title=title, body=body)
             db.session.add(post)
             db.session.commit()
-            return {"status": 200, "message": "Data Posted sucessfully"}
+            return {"status": 200, "message": "Data Posted successfully"}
 
     class TableContact:
+        """ Class handele the Contact table in db """
+
         @staticmethod
         def all_query() -> list:
+            """
+            Method returns lists of all contacts from database
+            """
             data = []
             cons = Contact.query.all()
             for con in cons:
@@ -57,14 +77,19 @@ class DB_Handler:
             return data
 
         @staticmethod
-        def PostData(name, email, message) -> dict:
+        def PostData(name: str, email: str, message: str) -> dict:
+            """
+            Method add contact data to the db
+            """
             con = Contact(name=name, email=email, message=message)
             db.session.add(con)
             db.session.commit()
-            return {"status": 200, "message": "Message sended sucessfully"}
+            return {"status": 200, "message": "Message sended successfully"}
 
     class TablePortfolio:
-        @staticmethod
-        def text() -> str:
+        """ Class handele the Portfolio table in db """
 
+        @staticmethod
+        def text() -> Any:
+            """ Method return the html string for index """
             return markdown.markdown(Portfolio.query.all()[0].text)

@@ -35,7 +35,7 @@ def test_project(client):
     with captured_templates(app) as templates:
         response = client.get("/projects")
         _, context = templates[0]
-    assert context["repos"] == github_repo()
+    assert context["repos"] == github_repo("yogeshwaran01")
 
 
 def test_potfolio(client):
