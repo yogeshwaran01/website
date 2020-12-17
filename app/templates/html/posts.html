@@ -1,32 +1,31 @@
 {% extends 'html/base.html' %} {% block content %}
 <header class="masthead" style="background-color: black;">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-8 mx-auto">
-        <div class="site-heading">
-          <h1 style="color: yellowgreen;">Blogs</h1>
-          <span class="subheading">My Personal Blog</span>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <div class="site-heading">
+                    <h1 style="color: yellowgreen;">Blogs</h1>
+                    <span class="subheading">My Personal Blogs</span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 col-lg-8">
-      {% for post in posts %}
-      <div class="post-preview">
-        <a href="/post?id={{ post.id }}">
-          <h2 class="post-title">{{ post.title }}</h2>
-        </a>
-        <p class="post-meta">Posted on {{ post.timestamp }}</p>
-      </div>
-      <hr />
-      {% endfor %}
-      <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-10 col-lg-8">
+            {% for post in posts %}
+            <div class="post-preview">
+                <a href="/post?id={{ post.id }}">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                </a>
+                <p class="post-meta">Posted on {{ post.timestamp }}</p>
+            </div>
+            <hr /> {% endfor %}
+            <div class="clearfix"></div>
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock content %}

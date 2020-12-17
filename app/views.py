@@ -140,7 +140,12 @@ def post():
     """
 
     id_ = request.args.get("id")
-    return render_template("html/post.html", post=DB_Handler.TablePost.query_by_id(id_))
+    if id_ in DB_Handler.TablePost.all_id():
+        return render_template(
+            "html/post.html", post=DB_Handler.TablePost.query_by_id(id_)
+        )
+    else:
+        return page_not_found(404)
 
 
 @app.route("/contact", methods=["POST", "GET"])
@@ -171,3 +176,34 @@ def contact():
 def projects():
     """ Route path for projects """
     return render_template("html/projects.html", repos=github_repo("yogeshwaran01"))
+
+
+# Error Handling
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """ Handling page_not_found 404 error """
+    return (
+        render_template(
+            "html/error.html",
+            code=404,
+            message_1="Sorry, You are Lost",
+            message_2="Page is not available",
+        ),
+        404,
+    )
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    """ Handling internal_server_error 500 error """
+    return (
+        render_template(
+            "html/error.html",
+            code=500,
+            message_1="Internal Server Error",
+            message_2="Sorry for this problem! we clear it ASAP",
+        ),
+        404,
+    )

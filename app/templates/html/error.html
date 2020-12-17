@@ -1,0 +1,19 @@
+{% extends 'html/base.html' %} {% block content %}
+<header class="masthead" style="background-color: black;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <div class="post-heading">
+                    <h1 style="color: yellowgreen;">{{ code }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<h3 style="text-align: center;">{{ message_1 }}</h3>
+<p style="text-align: center;">{{ message_2 }}</p>
+{% if code == 500 %}
+<a href="mailto: yogeshin247@gmail.com">
+    <p style="color: red; text-align: center;">Notify to the admin</p>
+</a> {% endif %} {% endblock content %}

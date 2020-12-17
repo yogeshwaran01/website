@@ -1,35 +1,29 @@
 {% extends 'html/base.html' %} {% block content %}
 
 <header class="masthead" style="background-color: black;">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-8 mx-auto">
-        <div class="post-heading">
-          {% if message %}
-          <h1 style="color: yellowgreen;">{{ message }}</h1>
-          {% else %}
-          <h1 style="color: yellowgreen;">Contact Me</h1>
-          {% endif %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <div class="post-heading">
+                    {% if message %}
+                    <h1 style="color: yellowgreen;">{{ message }}</h1>
+                    {% else %}
+                    <h1 style="color: yellowgreen;">Contact Me</h1>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 col-lg-8 mx-auto">
-      <p>Want to get in touch? Fill out the form below to send me a message</p>
-      <form
-        id="contactForm"
-        name="sentMessage"
-        novalidate="novalidate"
-        action="/contact"
-        method="POST"
-      >
-        <div class="control-group">
-          <div class="form-group floating-label-form-group controls">
-            <label>Name</label
+    <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto">
+            <p>Want to get in touch? Fill out the form below to send me a message</p>
+            <form id="contactForm" name="sentMessage" novalidate="novalidate" action="/contact" method="POST">
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Name</label
             ><input
               class="form-control"
               type="text"

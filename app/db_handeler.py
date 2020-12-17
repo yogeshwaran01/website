@@ -45,6 +45,13 @@ class DB_Handler:
             }
 
         @staticmethod
+        def all_id() -> list:
+            """
+            Method return all id of the post
+            """
+            return [str(i["id"]) for i in DB_Handler.TablePost.all_query()]
+
+        @staticmethod
         def all_title() -> list:
             """
             Method returns all titles of the posts from db
