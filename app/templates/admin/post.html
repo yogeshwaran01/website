@@ -1,59 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>New-Post</title>
     {{ simplemde.css }} {{ simplemde.js }}
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='assets/fonts/font-awesome.min.css')}}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}"
-    />
-    <link
-      rel="manifest"
-      href="{{ url_for('static', filename='favicon/site.webmanifest') }}"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/font-awesome.min.css')}}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}" />
+    <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}" />
+</head>
+
+<body>
     <h1>New Post</h1>
-    <form
-      id="contactForm"
-      name="sentMessage"
-      novalidate="novalidate"
-      action="/admin/new"
-      method="POST"
-    >
-      <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-          <label>Name</label
+    <form id="contactForm" name="sentMessage" novalidate="novalidate" action="/admin/new" method="POST">
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <label>Name</label
           ><input
             class="form-control"
             type="text"

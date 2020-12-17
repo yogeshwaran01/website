@@ -32,10 +32,8 @@ def test_post(client):
 
 def test_project(client):
     """ Testcase for jinja to get all Projects from db """
-    with captured_templates(app) as templates:
-        client.get("/projects")
-        _, context = templates[0]
-    assert context["repos"] == github_repo("yogeshwaran01")
+    response = client.get("/projects")
+    assert b"github" in response.data
 
 
 def test_potfolio(client):
