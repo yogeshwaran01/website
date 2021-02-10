@@ -10,4 +10,4 @@ install:
 script:
   - flake8 -v
   - pytest -v
-  - mypy --config-file setup.cfg . -v
+  - mypy --config-file setup.cfg .

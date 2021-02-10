@@ -45,6 +45,21 @@ class DB_Handler:
             }
 
         @staticmethod
+        def query_by_title(title: str) -> dict:
+            """
+            Method returns post for given id from db
+            """
+            post = Posts.query.filter_by(title=title).first()
+            if post is None:
+                return {"status": 404, "message": "No Post Available"}
+            return {
+                "title": post.title,
+                "body": markdown.markdown(post.body),
+                "timestamp": post.timestamp,
+                "id": post.id,
+            }
+
+        @staticmethod
         def all_id() -> list:
             """
             Method return all id of the post
@@ -57,6 +72,17 @@ class DB_Handler:
             Method returns all titles of the posts from db
             """
             return [i["title"] for i in DB_Handler.TablePost.all_query()]
+
+        @staticmethod
+        def title_by_id(id_: int) -> str:
+            """
+            Return the title of the post for given id
+            """
+            post = Posts.query.filter_by(id=id_).first()
+            if post is None:
+                return "404"
+            return post.title
+
 
         @staticmethod
         def PostData(title: str, body: str) -> dict:
