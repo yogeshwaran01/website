@@ -83,7 +83,6 @@ class DB_Handler:
                 return "404"
             return post.title
 
-
         @staticmethod
         def PostData(title: str, body: str) -> dict:
             """
