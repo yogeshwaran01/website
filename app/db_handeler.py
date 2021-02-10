@@ -74,7 +74,7 @@ class DB_Handler:
             return [i["title"] for i in DB_Handler.TablePost.all_query()]
 
         @staticmethod
-        def title_by_id(id_: int) -> str:
+        def title_by_id(id_: int) -> Any:
             """
             Return the title of the post for given id
             """
