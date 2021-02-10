@@ -1,6 +1,6 @@
 # My Website
 
-[![Downloads](https://img.shields.io/travis/yogeshwaran01/website/main.svg?logo=travis)](https://travis-ci.org/github/yogeshwaran01/website/)
+[![Python Flask Application](https://github.com/yogeshwaran01/website/workflows/Python%20Flask%20Application/badge.svg)](https://github.com/yogeshwaran01/website/actions/)
 
 My personal completely dynamic website site about [me](https://yogeshwaran01.herokuapp.com/) and [my Blogs](https://yogeshwaran01.herokuapp.com/posts) made with flask.
 
