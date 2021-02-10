@@ -33,5 +33,10 @@ jobs:
       run: |
         mypy --config-file setup.cfg .
     - name: Test with pytest
+      env: 
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        ADMIN_USER: ${{ secrets.ADMIN_USER }}
+        ADMIN_PASS: ${{ secrets.ADMIN_PASS }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         pytest -v
