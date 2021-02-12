@@ -1,11 +1,11 @@
 {% extends 'html/base.html' %} {% block content %}
 <header class="masthead" style="background-color: black;">
-    <div class="overlay"></div>
+    <div class="overlay" style="background-color: black;"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-lg-8 mx-auto">
-                <div class="post-heading">
-                    <h1 style="color: yellowgreen;">Projects</h1>
+                <div class="site-heading">
+                    <h1 style="color: #5cbe09;">Projects</h1>
                 </div>
             </div>
         </div>
@@ -13,10 +13,9 @@
 </header>
 <ul class="list-inline text-center">
     {% for repo in repos %}
-    <li class="list-inline-item">
-        <div class="github-card" data-github="{{ repo }}" data-width="400" data-height="178" data-theme="default"></div>
-    </li>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    <a href="{{ repo.link }}">
+        <img align="center" src="{{ repo.image }}" />
+      </a>
     {% endfor %}
 </ul>
 
