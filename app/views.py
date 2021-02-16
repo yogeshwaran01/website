@@ -1,5 +1,6 @@
 import os
 from urllib.parse import urlparse
+from smtplib import SMTPRecipientsRefused
 
 from app import app, database as db, admin, auth, mail
 from helper.github_repos import github_repo
@@ -248,8 +249,11 @@ def contact():
             recipients=[email]
         )
         msg.body = f"Hi, {name} Thank you for contact me. I will reply as soon as Possible."
-        mail.send(msg)
-        return render_template("html/contact.html", message=a["message"])
+        try:
+            mail.send(msg)
+            return render_template("html/contact.html", message=a["message"])
+        except SMTPRecipientsRefused:
+            return render_template("html/contact.html", message="Invaild Email Address")
     return render_template(
         "html/contact.html",
         content="Contact Yogeshwaran",
