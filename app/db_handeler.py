@@ -2,7 +2,6 @@ from typing import Any
 import markdown
 
 from .models import db, Posts, Contact, Portfolio
-from helper.utils import make_url_from_title
 
 
 class DB_Handler:
@@ -26,7 +25,6 @@ class DB_Handler:
                     "body": post.body,
                     "timestamp": post.timestamp,
                     "id": post.id,
-                    "url": make_url_from_title(post.title),
                 }
                 data.append(x)
             return data
@@ -44,7 +42,6 @@ class DB_Handler:
                 "body": markdown.markdown(post.body),
                 "timestamp": post.timestamp,
                 "id": post.id,
-                "url": make_url_from_title(post.title),
             }
 
         @staticmethod
@@ -60,7 +57,6 @@ class DB_Handler:
                 "body": markdown.markdown(post.body),
                 "timestamp": post.timestamp,
                 "id": post.id,
-                "url": make_url_from_title(post.title),
             }
 
         @staticmethod
