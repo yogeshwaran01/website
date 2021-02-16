@@ -1,6 +1,5 @@
 import os
 from urllib.parse import urlparse
-from smtplib import SMTPRecipientsRefused
 
 from app import app, database as db, admin, auth
 from helper.github_repos import github_repo
