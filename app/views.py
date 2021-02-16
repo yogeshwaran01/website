@@ -7,6 +7,7 @@ from helper.github_repos import github_repo
 from helper.admin_auth import Authenticate
 from .db_handeler import DB_Handler
 from .models import Posts, Contact, Portfolio
+from helper.utils import make_title_from_url
 
 
 from flask import (
@@ -180,7 +181,7 @@ def posts():
         "html/posts.html",
         posts=DB_Handler.TablePost.all_query(),
         content="Yogeshwaran's Blogs",
-        title="Blogs - YOGESHWARAN R",
+        title="Blogs · YOGESHWARAN R",
     )
 
 
@@ -198,18 +199,18 @@ def post():
             "html/post.html",
             post=DB_Handler.TablePost.query_by_id(id_),
             title=title,
-            content=title
+            content=title,
         )
     else:
         return page_not_found(404)
 
 
-@app.route("/post/<title>")
-def post_title(title):
+@app.route("/post/<title_>")
+def post_title(title_):
     """
     Route for post with particular Title
     """
-
+    title = make_title_from_url(title_)
     if title in DB_Handler.TablePost.all_title():
         return render_template(
             "html/post.html",
@@ -245,7 +246,7 @@ def contact():
     return render_template(
         "html/contact.html",
         content="Contact Yogeshwaran",
-        title="Contact - YOGESHWARAN R",
+        title="Contact · YOGESHWARAN R",
     )
 
 
@@ -256,7 +257,7 @@ def projects():
         "html/projects.html",
         repos=github_repo("yogeshwaran01"),
         content="Projects of Yogeshwaran",
-        title="Projects - YOGESHWARAN R",
+        title="Projects · YOGESHWARAN R",
     )
 
 
