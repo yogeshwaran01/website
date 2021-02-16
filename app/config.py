@@ -12,9 +12,3 @@ class Configuration:
     BASIC_AUTH_PASSWORD = os.environ.get('ADMIN_PASS')
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
-    MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PORT = 465
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    MAIL_USE_TLS = False
-    MAIL_USE_SSL = True
