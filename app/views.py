@@ -1,7 +1,7 @@
 import os
 from urllib.parse import urlparse
 
-from app import app, database as db, admin, auth
+from app import app, database as db, admin, auth, mail
 from helper.github_repos import github_repo
 from helper.admin_auth import Authenticate
 from .db_handeler import DB_Handler
@@ -18,6 +18,7 @@ from flask import (
     send_from_directory,
     make_response,
 )
+from flask_mail import Message
 
 # favicon
 
@@ -241,6 +242,13 @@ def contact():
         email = request.form.get("email")
         message = request.form.get("message")
         a = DB_Handler.TableContact.PostData(name, email, message)
+        msg = Message(
+            'Thank you for Contact Me',
+            sender=os.environ.get('MAIL_USERNAME'),
+            recipients=[email]
+        )
+        msg.body = f"Hi, {name} Thank you for contact me. I will reply as soon as Possible."
+        mail.send(msg)
         return render_template("html/contact.html", message=a["message"])
     return render_template(
         "html/contact.html",
