@@ -293,6 +293,7 @@ def internal_server_error(e):
         404,
     )
 
+
 @app.route("/video/promote")
 def video():
     return render_template_string(
