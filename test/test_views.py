@@ -47,7 +47,7 @@ def test_potfolio(client):
 def test_404_error(client):
     """ Testcase for error page """
     response = client.get("/somthing_not_in_path")
-    assert b"400" in response.data
+    assert b"404" in response.data
 
 
 def test_404_error_for_invalid_post_id(client):
