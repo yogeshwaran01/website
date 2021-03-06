@@ -5,7 +5,7 @@ from app import app, database as db, admin, auth
 from helper.github_repos import github_repo
 from helper.admin_auth import Authenticate
 from .db_handeler import DB_Handler
-from .models import Posts, Contact, Portfolio
+from .models import Posts, Contact, Portfolio, Custom_Routes
 from helper.utils import make_title_from_url
 
 
@@ -134,6 +134,7 @@ def post_api():
 admin.add_view(Authenticate(Posts, db.session))
 admin.add_view(Authenticate(Contact, db.session))
 admin.add_view(Authenticate(Portfolio, db.session))
+admin.add_view(Authenticate(Custom_Routes, db.session))
 
 
 @auth.required
@@ -292,6 +293,11 @@ def internal_server_error(e):
         ),
         404,
     )
+
+
+@app.route("/<string>")
+def custom(string):
+    return DB_Handler.TableRoutes.get_source_by_path(string)
 
 
 @app.route("/video/promote")

@@ -1,7 +1,7 @@
 from typing import Any
 import markdown
 
-from .models import db, Posts, Contact, Portfolio
+from .models import db, Posts, Contact, Portfolio, Custom_Routes
 from helper.utils import make_url_from_title
 
 
@@ -123,9 +123,19 @@ class DB_Handler:
             return {"status": 200, "message": "Message sended successfully"}
 
     class TablePortfolio:
-        """ Class handele the Portfolio table in db """
+        """ Class handle the Portfolio table in db """
 
         @staticmethod
         def text() -> Any:
             """ Method return the html string for index """
             return markdown.markdown(Portfolio.query.all()[0].text)
+
+    class TableRoutes:
+        """ Class handle the Custom Routes """
+
+        @staticmethod
+        def get_source_by_path(path):
+            source = Custom_Routes.query.filter_by(path=path).first()
+            if source is None:
+                return {"status": 404, "message": "No Source Available"}
+            return source.source

@@ -35,3 +35,14 @@ class Portfolio(db.Model):  # type: ignore
 
     def __repr__(self) -> str:
         return f"{self.id}"
+
+
+class Custom_Routes(db.Model):  # type: ignore
+    """ Database Table for Html Routes """
+
+    id = db.Column(db.Integer, primary_key=True)
+    path = db.Column(db.String(150))
+    source = db.Column(db.Text())
+
+    def __repr__(self) -> str:
+        return f"{self.path}"
