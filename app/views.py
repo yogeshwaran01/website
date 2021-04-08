@@ -15,7 +15,6 @@ from flask import (
     abort,
     redirect,
     render_template,
-    render_template_string,
     send_from_directory,
     make_response,
 )
@@ -298,24 +297,3 @@ def internal_server_error(e):
 @app.route("/<string>")
 def custom(string):
     return DB_Handler.TableRoutes.get_source_by_path(string)
-
-
-@app.route("/video/promote")
-def video():
-    return render_template_string(
-        """
-    <!DOCTYPE html>
-<html>
-<head>
-  <title>If you were hosting an event at your school, how would you get students to attend?</title>
-</head>
-<body>
-  <h2>If you were hosting an event at your school, how would you get students to attend?</h2>
-  <video controls>
-    <source src={{ url_for('static', filename="videos/promote.mp4") }} type="video/mp4">
-  </video>
-</body>
-</html>
-
-    """
-    )
