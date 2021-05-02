@@ -13,7 +13,7 @@ def github_repo(username: str) -> list:
     data = requests.get(api).json()
     for i in data:
         name = i["full_name"]
-        if name in skipable_repos:
+        if name in skipable_repos or i['fork']:
             pass
         else:
             url = "https://github-readme-stats.vercel.app/api/pin/?username={}&repo={}&theme=chartreuse-dark".format(
