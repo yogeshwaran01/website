@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_admin import Admin
 from flask_basicauth import BasicAuth
 from flask_simplemde import SimpleMDE
+from flask_compress import Compress
 
 from .config import Configuration
 
@@ -11,6 +12,8 @@ from .config import Configuration
 app = Flask(__name__)
 # loads configuration for flask app
 app.config.from_object(Configuration)
+
+Compress(app)
 
 # init Database for Flask app
 database = SQLAlchemy(app)
