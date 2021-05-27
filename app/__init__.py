@@ -5,6 +5,7 @@ from flask_admin import Admin
 from flask_basicauth import BasicAuth
 from flask_simplemde import SimpleMDE
 from flask_compress import Compress
+from flask_cors import CORS
 
 from .config import Configuration
 
@@ -14,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(Configuration)
 
 Compress(app)
+CORS(app)
 
 # init Database for Flask app
 database = SQLAlchemy(app)
