@@ -250,6 +250,28 @@ def contact():
     )
 
 
+@app.route("/api/contact", methods=["POST"])
+def api_contact():
+    """
+    Route for Contact page
+
+    Method:
+    ------
+        POST
+
+    Admin Authentication:
+    --------------------
+        Not Required
+
+    """
+
+    name = request.json.get("name")
+    email = request.json.get("email")
+    message = request.json.get("message")
+    a = DB_Handler.TableContact.PostData(name, email, message)
+    return jsonify({"message": a["message"]})
+
+
 @app.route("/projects")
 def projects():
     """ Route path for projects """

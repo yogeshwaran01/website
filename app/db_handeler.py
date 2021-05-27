@@ -23,7 +23,7 @@ class DB_Handler:
             for post in posts:
                 x = {
                     "title": post.title,
-                    "body": post.body,
+                    "body": markdown.markdown(post.body),
                     "timestamp": post.timestamp,
                     "id": post.id,
                     "url": make_url_from_title(post.title),
