@@ -4,7 +4,7 @@ from test import client
 from test import captured_templates
 from app import app
 from app.db_handeler import DB_Handler
-from helper.github_repos import github_repo
+from helper.utils import make_title_from_url
 
 
 def test_index(client):
@@ -23,11 +23,11 @@ def test_posts(client):
 
 def test_post(client):
     """ Testcase for jinja to get post data from db """
+    test_pat = "Instantly-Host-any-non-binary-files-from-your-terminal"
     with captured_templates(app) as templates:
-        client.get("post?id=1")
+        client.get(f"post/{test_pat}")
         _, context = templates[0]
-        assert request.args["id"] == "1"
-        assert context["post"] == DB_Handler.TablePost.query_by_id(1)
+        assert context["post"] == DB_Handler.TablePost.query_by_title(make_title_from_url(test_pat))
 
 
 def test_project(client):
